@@ -42,7 +42,16 @@ if RUBY_VERSION >= '1.9'
           raise TypeError, "no implicit conversion of #{string.inspect} into String"
         end
       end
-      string.sub(AMERICAN_DATE_RE){|m| "#$3-#$1-#$2"}
+
+      # Force to complete year for short american date format.
+      string.sub(AMERICAN_DATE_RE) do |m|
+        year, month, day = $3, $1, $2
+        if year.length == 2
+          century = Time.now.year / 100
+          year = "#{century}#{year}"
+        end
+        [year, month, day].join('-')
+      end
     end
   end
 

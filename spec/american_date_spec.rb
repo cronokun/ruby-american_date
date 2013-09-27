@@ -7,8 +7,7 @@ describe "Date.parse" do
   end
 
   specify "should use american date format for d/m/yy" do
-    Date.parse('1/2/03', true).should == Date.new(2003, 1, 2)
-    Date.parse('1/2/03', false).should == Date.new(3, 1, 2)
+    Date.parse('1/2/03').should == Date.new(2003, 1, 2)
   end
 
   specify "should use american date format for dd/mm/yyyy" do
@@ -72,8 +71,7 @@ describe "DateTime.parse" do
   end
 
   specify "should use american date format for d/m/yy" do
-    DateTime.parse('1/2/03', true).should == DateTime.new(2003, 1, 2)
-    DateTime.parse('1/2/03', false).should == DateTime.new(3, 1, 2)
+    DateTime.parse('1/2/03').should == DateTime.new(2003, 1, 2)
   end
 
   specify "should use american date format for dd/mm/yyyy" do
@@ -213,8 +211,7 @@ describe "Date._parse" do
   end
 
   specify "should use american date format for d/m/yy" do
-    Date._parse('1/2/03', true).should == {:year=>2003, :mon=>1, :mday=>2}
-    Date._parse('1/2/03', false).should == {:year=>3, :mon=>1, :mday=>2}
+    Date._parse('1/2/03').should == {:year=>2003, :mon=>1, :mday=>2}
   end
 
   specify "should use american date format for dd/mm/yyyy" do
